@@ -25,6 +25,20 @@ body{
     font-family: Oswald;
     color: rgb(255,233,127);
 }
+
+.logoerr{
+    display: inline;
+    height: 30%;
+    width: 30%;
+    margin-right: 40px;
+}
+
+.titleerr{
+    font-size:medium;
+    font-family: Oswald;
+    color: rgb(255,233,127);
+}
+
 .logo{
     display: inline;
     height: 150px;
