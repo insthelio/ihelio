@@ -27,14 +27,13 @@ body{
 }
 
 .logoerr{
-    display: inline;
-    height: 30%;
-    width: 30%;
-    margin-right: 40px;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
 }
 
 .titleerr{
-    font-size:medium;
+    font-size: 1.2rem;
     font-family: Oswald;
     color: rgb(255,233,127);
 }
@@ -232,9 +231,8 @@ body{
 }
 
 .errt{
-    display: flex;
+    font-size: 1.5rem;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(100,10,10);
-    margin:40px;
 }
