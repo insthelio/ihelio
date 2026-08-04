@@ -16,7 +16,29 @@
   window.onerror = function(msg, url, line, col, error) {
     logToScreen('ERROR: ' + msg + ' (línea ' + line + ')');
   };
+  window.onunhandledrejection = function(event) {
+    logToScreen('PROMESA RECHAZADA: ' + event.reason);
+  };
   logToScreen('Página cargada, esperando cámara...');
+
+  // Prueba directa de la cámara, sin MindAR de por medio
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+      logToScreen('CÁMARA OK: acceso concedido');
+      stream.getTracks().forEach(t => t.stop());
+    })
+    .catch(function(err) {
+      logToScreen('CÁMARA FALLÓ: ' + err.name + ' - ' + err.message);
+    });
+
+  // Comprueba si el archivo targets.mind se puede descargar
+  fetch('./targets.mind')
+    .then(function(res) {
+      logToScreen('targets.mind status: ' + res.status);
+    })
+    .catch(function(err) {
+      logToScreen('targets.mind FETCH ERROR: ' + err.message);
+    });
 </script>
     <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
