@@ -46,5 +46,34 @@
         <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
       </a-entity>
     </a-scene>
+    <script>
+  const sceneEl = document.querySelector('a-scene');
+
+  sceneEl.addEventListener('loaded', function () {
+    logToScreen('a-scene: loaded (DOM listo)');
+  });
+
+  sceneEl.addEventListener('renderstart', function () {
+    logToScreen('a-scene: renderstart (motor 3D arrancó)');
+  });
+
+  sceneEl.addEventListener('arReady', function () {
+    logToScreen('MindAR: arReady (tracking listo)');
+  });
+
+  sceneEl.addEventListener('arError', function (err) {
+    logToScreen('MindAR: arError -> ' + JSON.stringify(err.detail));
+  });
+
+  // Chequeo a los 8 segundos: ¿existe ya el <video> de la cámara en el DOM?
+  setTimeout(function () {
+    const video = document.querySelector('video');
+    if (video) {
+      logToScreen('VIDEO encontrado: ' + video.videoWidth + 'x' + video.videoHeight + ', paused=' + video.paused);
+    } else {
+      logToScreen('NO se encontró ningún <video> en el DOM todavía');
+    }
+  }, 8000);
+</script>
   </body>
 </html>
